@@ -116,6 +116,7 @@ public class TestGraphMPOnGrid {
         double optimalVal = -Double.MAX_VALUE;
         double bestPre = 0.0D;
         double bestRec = 0.0D;
+        GraphMP bestGraphMP = null;
         for (int s : candidateS) {
             double B = s - 1 + 0.0D;
             int t = 5;
@@ -130,9 +131,11 @@ public class TestGraphMPOnGrid {
                 int len = Utils.intersect(apdm.data.trueSubGraphNodes, graphMP.resultNodes_supportX).length;
                 bestRec = len * 1.0D / apdm.data.trueSubGraphNodes.length * 1.0D;
                 bestPre = len * 1.0D / graphMP.resultNodes_supportX.length * 1.0D;
+                bestGraphMP = graphMP;
             }
         }
         System.out.println("precision : " + bestPre + " ; recall : " + bestRec);
+        System.out.println("the subgraph is: "+ Arrays.toString(bestGraphMP.resultNodes_Tail));
     }
 
     @Test
